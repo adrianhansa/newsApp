@@ -15,6 +15,8 @@ const Stack = createStackNavigator();
 
 const Tabs = createBottomTabNavigator();
 
+const Drawer = createDrawerNavigator();
+
 const AppStack = () => {
   return (
     <Stack.Navigator>
@@ -48,28 +50,43 @@ const FavouritesNavigator = () => {
   );
 };
 
+const TabsNavigator = () => {
+  return (
+    <Tabs.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: () => {
+          let iconName;
+          if (route.name === "Home") {
+            iconName = "home";
+          } else if (route.name === "Favourites") {
+            iconName = "favorite";
+          }
+          return <MaterialIcons name={iconName} size={24} color="black" />;
+        },
+      })}
+    >
+      <Tabs.Screen name="Home" component={AppStack}></Tabs.Screen>
+      <Tabs.Screen
+        name="Favourites"
+        component={FavouritesNavigator}
+      ></Tabs.Screen>
+    </Tabs.Navigator>
+  );
+};
+
+const AppDrawer = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={TabsNavigator}></Drawer.Screen>
+      <Drawer.Screen name="About" component={AboutScreen}></Drawer.Screen>
+    </Drawer.Navigator>
+  );
+};
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Tabs.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: () => {
-            let iconName;
-            if (route.name === "Home") {
-              iconName = "home";
-            } else if (route.name === "Favourites") {
-              iconName = "favorite";
-            }
-            return <MaterialIcons name={iconName} size={24} color="black" />;
-          },
-        })}
-      >
-        <Tabs.Screen name="Home" component={AppStack}></Tabs.Screen>
-        <Tabs.Screen
-          name="Favourites"
-          component={FavouritesNavigator}
-        ></Tabs.Screen>
-      </Tabs.Navigator>
+      <AppDrawer />
     </NavigationContainer>
   );
 };
