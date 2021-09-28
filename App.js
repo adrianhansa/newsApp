@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import Header from "./src/components/Header";
-import Card from "./src/components/Card";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+
+import NewsListScreen from "./src/components/screens/NewsListScreen";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -23,20 +22,5 @@ export default function App() {
       />
     );
   }
-  return (
-    <View style={styles.appContainer}>
-      <Header />
-      <Card />
-    </View>
-  );
+  return <NewsListScreen />;
 }
-
-const styles = StyleSheet.create({
-  appContainer: { flex: 1 },
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
