@@ -77,7 +77,10 @@ const TabsNavigator = () => {
 const AppDrawer = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={TabsNavigator}></Drawer.Screen>
+      <Drawer.Screen
+        name="HomeScreen"
+        component={TabsNavigator}
+      ></Drawer.Screen>
       <Drawer.Screen name="About" component={AboutScreen}></Drawer.Screen>
     </Drawer.Navigator>
   );
