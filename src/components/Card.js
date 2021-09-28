@@ -1,26 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-const Card = () => {
+const Card = ({ navigation, id }) => {
   return (
-    <View style={styles.card}>
-      <View style={styles.imageWrapper}>
-        <Image
-          source={{
-            uri: "https://www.borouge.com/MediaCentre/Images1/News-Website-banner-V1.JPG",
-          }}
-          style={styles.image}
-        />
+    <Pressable onPress={() => navigation.navigate("NewsDetails", { id })}>
+      <View style={styles.card}>
+        <View style={styles.imageWrapper}>
+          <Image
+            source={{
+              uri: "https://www.borouge.com/MediaCentre/Images1/News-Website-banner-V1.JPG",
+            }}
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.titleWrapper}>
+          <Text style={styles.title}>Dummy Title!</Text>
+          <MaterialIcons name="favorite-outline" size={24} color="black" />
+        </View>
+        <View style={styles.descriptionWrapper}>
+          <Text style={styles.description}>This is a dummy description</Text>
+        </View>
       </View>
-      <View style={styles.titleWrapper}>
-        <Text style={styles.title}>Dummy Title!</Text>
-        <MaterialIcons name="favorite-outline" size={24} color="black" />
-      </View>
-      <View style={styles.descriptionWrapper}>
-        <Text style={styles.description}>This is a dummy description</Text>
-      </View>
-    </View>
+    </Pressable>
   );
 };
 

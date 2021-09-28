@@ -1,13 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import Header from "../Header";
+import { StyleSheet, View } from "react-native";
 import Card from "../Card";
 
-const NewsListScreen = () => {
+const NewsListScreen = ({ navigation }) => {
   return (
     <View style={styles.appContainer}>
-      <Header />
-      <Card />
+      <Card navigation={navigation} id="someId" />
     </View>
   );
 };

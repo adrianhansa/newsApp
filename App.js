@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-
-import NewsListScreen from "./src/components/screens/NewsListScreen";
+import AppNavigator from "./src/navigation/AppNavigator";
 
 const loadFonts = () => {
   return Font.loadAsync({
@@ -22,5 +21,5 @@ export default function App() {
       />
     );
   }
-  return <NewsListScreen />;
+  return <AppNavigator />;
 }

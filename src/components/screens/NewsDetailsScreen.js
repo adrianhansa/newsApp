@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const NewsDetailsScreen = () => {
+const NewsDetailsScreen = ({ route }) => {
+  const [id, setId] = useState(null);
+  useEffect(() => {
+    setId(route.params.id);
+  }, [route]);
   return (
     <View>
-      <Text>NewsDetailsScreen</Text>
+      <Text>NewsDetailsScreen - {id && id}</Text>
     </View>
   );
 };
